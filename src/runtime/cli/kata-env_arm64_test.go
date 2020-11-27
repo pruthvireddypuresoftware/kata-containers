@@ -12,7 +12,7 @@ import (
 func getExpectedHostDetails(tmpdir string) (HostInfo, error) {
 	expectedVendor := "0x41"
 	expectedModel := "8"
-	expectedVMContainerCapable := true
+	expectedVMContainerCapable := false
 	return genericGetExpectedHostDetails(tmpdir, expectedVendor, expectedModel, expectedVMContainerCapable)
 }
 
