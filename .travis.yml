@@ -26,6 +26,7 @@ before_install:
   - git fetch
   - export RUST_BACKTRACE=1
   - export target_branch=$TRAVIS_BRANCH
+  - sudo apt-get install haveged
   - "ci/setup.sh"
 
 # we use install to run check agent
@@ -55,10 +56,20 @@ jobs:
   include:
   - name: x86_64 test
     os: linux
+  - name: arm64-graviton test
+    os: linux
+    arch: arm64-graviton2
+    dist: focal
+    sudo: required
+    group: edge
+    virt: vm
+    install: skip
+    script: skip
   - name: ppc64le test
     os: linux-ppc64le
     install: skip
     script: skip
   allow_failures:
     - name: ppc64le test
+    - name: arm64-graviton test
   fast_finish: true
